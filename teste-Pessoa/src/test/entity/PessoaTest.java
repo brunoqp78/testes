@@ -1,19 +1,46 @@
 package test.entity;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import entity.Pessoa;
 
 public class PessoaTest {
+	private Pessoa pessoa;
+	
+	@BeforeAll
+	public static void inicializarTeste() {
+		System.out.println("Inicia Testes");
+	}
+	
+	@BeforeEach
+	public void inicializaMetodosTeste() 
+	{
+		// instanciar objetos
+		pessoa = new Pessoa();
+		System.out.println("Método que executa antes de cada teste");
+	}
 
+	@AfterEach
+	private void finalizaMetodosTeste() {
+		pessoa = null;
+		System.out.println("Método que executa após cada teste");
+	}
+	
+	@AfterAll
+	public static void finalizaTestes() {
+		System.out.println("Finaliza testes");		
+	}
+	
 	@Test
 	/**
 	 * nome precisa ter entre 3 e 100 caracteres
 	 */
 	public void testarConstrutorNomeValido() {
-		// instanciar objetos
-		Pessoa pessoa;
 		// cenário de teste
 		String nome = "João";
 		String resultadoEsperado = "João";
@@ -21,6 +48,8 @@ public class PessoaTest {
 		pessoa = new Pessoa(nome);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getNome());
+		System.out.println("Metodo teste 1");
+		
 	}
 
 	@Test
@@ -28,8 +57,6 @@ public class PessoaTest {
 	 * nome precisa ter entre 3 e 100 caracteres
 	 */
 	public void testarConstrutorNomeInvalidoMenosCaracteres() {
-		// instanciar objetos
-		Pessoa pessoa;
 		// cenário de teste
 		String nome = "Jo";
 		String resultadoEsperado = "nomeInvalido";
@@ -37,6 +64,7 @@ public class PessoaTest {
 		pessoa = new Pessoa(nome);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getNome());
+		System.out.println("Metodo teste 2");
 	}
 	
 	@Test
@@ -44,8 +72,6 @@ public class PessoaTest {
 	 * nome precisa ter entre 3 e 100 caracteres
 	 */
 	public void testarConstrutorNomeInvalidoMaisCaracteres() {
-		// instanciar objetos
-		Pessoa pessoa;
 		// cenário de teste
 		String nome = "jdasklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçks";
 		String resultadoEsperado = "nomeInvalido";
@@ -53,6 +79,8 @@ public class PessoaTest {
 		pessoa = new Pessoa(nome);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getNome());
+		System.out.println("Metodo teste 3");
+		
 	}
 
 	@Test
@@ -60,8 +88,6 @@ public class PessoaTest {
 	 * nome precisa ter entre 3 e 100 caracteres
 	 */
 	public void testarSetNomeNomeValido() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		String nome = "João";
 		String resultadoEsperado = "João";
@@ -69,6 +95,7 @@ public class PessoaTest {
 		pessoa.setNome(nome);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getNome());
+		System.out.println("Metodo teste 4");
 	}
 
 	@Test
@@ -76,8 +103,6 @@ public class PessoaTest {
 	 * nome precisa ter entre 3 e 100 caracteres
 	 */
 	public void testarSetNomeNomeInvalidoMenosCaracteres() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		String nome = "Jo";
 		String resultadoEsperado = "nomeInvalido";
@@ -85,6 +110,7 @@ public class PessoaTest {
 		pessoa.setNome(nome);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getNome());
+		System.out.println("Metodo teste 5");
 	}
 	
 	@Test
@@ -92,8 +118,6 @@ public class PessoaTest {
 	 * nome precisa ter entre 3 e 100 caracteres
 	 */
 	public void testarSetNomeNomeInvalidoMaisCaracteres() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		String nome = "jdasklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçksklfjdasklçfjlsakçfjlkdsaçfjlksdçfjlkçsadfjlçks";
 		String resultadoEsperado = "nomeInvalido";
@@ -101,6 +125,7 @@ public class PessoaTest {
 		pessoa.setNome(nome);;
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getNome());
+		System.out.println("Metodo teste 6");
 	}	
 
 	@Test
@@ -108,8 +133,6 @@ public class PessoaTest {
 	 * salario precisa ser um valor entre 1100 e 1000000
 	 */
 	public void testarSalarioValido() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		double salario = 2000;
 		double resultadoEsperado = 2000;
@@ -117,6 +140,7 @@ public class PessoaTest {
 		pessoa.setSalario(salario);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
+		System.out.println("Metodo teste 7");
 	}
 
 	@Test
@@ -124,8 +148,6 @@ public class PessoaTest {
 	 * salario precisa ser um valor entre 1100 e 1000000
 	 */
 	public void testarSalarioMenorLimite() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		double salario = 800;
 		double resultadoEsperado = Double.POSITIVE_INFINITY;
@@ -133,6 +155,7 @@ public class PessoaTest {
 		pessoa.setSalario(salario);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
+		System.out.println("Metodo teste 8");
 	}	
 
 	@Test
@@ -140,8 +163,6 @@ public class PessoaTest {
 	 * salario precisa ser um valor entre 1100 e 1000000
 	 */
 	public void testarSalarioMaiorLimite() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		double salario = 8000000;
 		double resultadoEsperado = Double.POSITIVE_INFINITY;
@@ -149,6 +170,7 @@ public class PessoaTest {
 		pessoa.setSalario(salario);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
+		System.out.println("Metodo teste 9");
 	}	
 	
 	@Test
@@ -156,8 +178,6 @@ public class PessoaTest {
 	 * porcentagem precisa ser um valor entre 1 e 100.
 	 */
 	public void testarPorcentagemValido() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		double porcentagem = 20;
 		double salario = 2000;
@@ -167,6 +187,7 @@ public class PessoaTest {
 		pessoa.reajustarSalario(porcentagem);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
+		System.out.println("Metodo teste 10");
 	}
 	
 	@Test
@@ -174,8 +195,6 @@ public class PessoaTest {
 	 * porcentagem precisa ser um valor entre 1 e 100.
 	 */
 	public void testarPorcentagemInvalidoMenorLimite() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		double porcentagem = -1;
 		double salario = 2000;
@@ -185,6 +204,7 @@ public class PessoaTest {
 		pessoa.reajustarSalario(porcentagem);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
+		System.out.println("Metodo teste 11");
 	}
 
 	@Test
@@ -192,8 +212,6 @@ public class PessoaTest {
 	 * porcentagem precisa ser um valor entre 1 e 100.
 	 */
 	public void testarPorcentagemInvalidoMaiorLimite() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
 		// cenário de teste
 		double porcentagem = 200;
 		double salario = 2000;
@@ -203,24 +221,6 @@ public class PessoaTest {
 		pessoa.reajustarSalario(porcentagem);
 		// comparação
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
+		System.out.println("Metodo teste 12");
 	}
-	
-	@Test
-	/**
-	 * porcentagem precisa ser um valor entre 1 e 100.
-	 */
-	public void testarAlgo() {
-		// instanciar objetos
-		Pessoa pessoa = new Pessoa();
-		// cenário de teste
-		double porcentagem = 200;
-		double salario = 2000;
-		double resultadoEsperado = 2000;
-		// execução
-		pessoa.setSalario(salario);
-		pessoa.reajustarSalario(porcentagem);
-		// comparação
-		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());		
-	}
-	
 }
