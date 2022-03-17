@@ -205,5 +205,22 @@ public class PessoaTest {
 		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());
 	}
 	
+	@Test
+	/**
+	 * porcentagem precisa ser um valor entre 1 e 100.
+	 */
+	public void testarAlgo() {
+		// instanciar objetos
+		Pessoa pessoa = new Pessoa();
+		// cenário de teste
+		double porcentagem = 200;
+		double salario = 2000;
+		double resultadoEsperado = 2000;
+		// execução
+		pessoa.setSalario(salario);
+		pessoa.reajustarSalario(porcentagem);
+		// comparação
+		Assertions.assertEquals(resultadoEsperado, pessoa.getSalario());		
+	}
 	
 }
